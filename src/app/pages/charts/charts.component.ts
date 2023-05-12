@@ -6,6 +6,7 @@ import { AppConfig } from 'src/app/core/models/app.config';
 import { AppConfigService } from 'src/app/core/services/app.config.service';
 import { OlympicService } from 'src/app/core/services/olympic.service';
 import { ChartOptions } from 'src/app/core/models/ChartOptions';
+import { ChartData } from 'src/app/core/models/ChartData';
 
 @Component({
   selector: 'app-charts',
@@ -16,7 +17,7 @@ export class ChartsComponent implements OnInit {
   public olympics?: OlympicCountry[];
   errorMessage: string = '';
   sub! : Subscription;
-  @Input() chartData: any;
+  @Input() chartData: ChartData = { labels: [] };
   @Input() chartType: string = "";
 
   subscription?: Subscription;
