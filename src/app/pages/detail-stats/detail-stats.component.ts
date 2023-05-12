@@ -97,8 +97,6 @@ export class DetailStatsComponent implements OnInit {
       (v) => v.medalsCount
     );
     this.countryName = this.currentCountryStats?.country;
-    console.log('label : ' + label);
-    console.log('data : ' + data);
     this.chartType = 'line';
     this.chartData = {
       labels: label,
@@ -111,7 +109,8 @@ export class DetailStatsComponent implements OnInit {
     };
   }
 
-  onBack() {
-    throw new Error('Method not implemented.');
+  onBack() : void{
+    this.router.navigate(['/']);
+    this.sub.unsubscribe();
   }
 }

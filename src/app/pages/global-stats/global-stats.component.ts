@@ -45,8 +45,6 @@ export class GlobalStatsComponent implements OnInit {
     });
     //number of countries
     this.countryCount = this.olympics?.length;
-    console.log("label : "+label);
-    console.log("data : "+data);
     this.chartType = "pie";
     this.chartData = {
       labels: label,
