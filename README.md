@@ -19,9 +19,9 @@ Avant de pouvoir exécuter ce projet, assurez-vous d'avoir les éléments suivan
 ## Installation
 
 1. Clonez ce dépôt de code sur votre machine locale :
-   ```shell
-   git clone <URL_DU_DÉPÔT>
-   ```
+  ```shell
+  git clone <URL_DU_DÉPÔT>
+  ```
 2. Accédez au répertoire du projet :
   ```shell
   cd olympic-graph
