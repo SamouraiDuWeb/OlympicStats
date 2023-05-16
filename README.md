@@ -20,7 +20,7 @@ Avant de pouvoir exécuter ce projet, assurez-vous d'avoir les éléments suivan
 
 1. Clonez ce dépôt de code sur votre machine locale :
   ```shell
-  git clone <https://github.com/SamouraiDuWeb/OlympicStats>
+  git clone "https://github.com/SamouraiDuWeb/OlympicStats"
   ```
 2. Accédez au répertoire du projet :
   ```shell
