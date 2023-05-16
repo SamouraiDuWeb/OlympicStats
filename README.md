@@ -1,29 +1,24 @@
-# OlympicGamesStarter
+# Projet Olympic Graph
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.1.3.
+Ce projet est une application web Angular pour afficher des graphiques des médailles olympiques par pays.
 
-Don't forget to install your node_modules before starting (`npm install`).
+## Fonctionnalités
 
-## Development server
+- Affichage d'un graphique en secteurs (pie chart) représentant les médailles par pays.
+- Collecte des données à partir d'un fichier JSON dans le répertoire `assets`.
+- Utilisation de PrimeNG pour le composant de graphique en secteurs.
+- Utilisation de Bootstrap pour la mise en page réactive.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Prérequis
 
-## Build
+Avant de pouvoir exécuter ce projet, assurez-vous d'avoir les éléments suivants installés :
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+- Node.js (version 12 ou supérieure)
+- Angular CLI
 
-## Where to start
+## Installation
 
-As you can see, an architecture has already been defined for the project. It is just a suggestion, you can choose to use your own. The predefined architecture includes (in addition to the default angular architecture) the following:
-
-- `components` folder: contains every reusable components
-- `pages` folder: contains components used for routing
-- `core` folder: contains the business logic (`services` and `models` folders)
-
-I suggest you to start by understanding this starter code. Pay an extra attention to the `app-routing.module.ts` and the `olympic.service.ts`.
-
-Once mastered, you should continue by creating the typescript interfaces inside the `models` folder. As you can see I already created two files corresponding to the data included inside the `olympic.json`. With your interfaces, improve the code by replacing every `any` by the corresponding interface.
-
-You're now ready to implement the requested features.
-
-Good luck!
+1. Clonez ce dépôt de code sur votre machine locale :
+   ```shell
+   git clone <URL_DU_DÉPÔT>
+   ```
