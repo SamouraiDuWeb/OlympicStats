@@ -22,3 +22,56 @@ Avant de pouvoir exécuter ce projet, assurez-vous d'avoir les éléments suivan
    ```shell
    git clone <URL_DU_DÉPÔT>
    ```
+2. Accédez au répertoire du projet :
+  ```shell
+  cd olympic-graph
+  ```
+3. Installez les dépendances du projet à l'aide de la commande suivante :
+  ```shell
+  npm install
+  ```
+
+## Utilisation
+
+Pour exécuter l'application en mode développement, utilisez la commande suivante :
+  ```shell
+  ng serve
+  ```
+
+Ouvrez votre navigateur et accédez à l'URL suivante : 'http://localhost:4200'
+
+## Structure du projet
+
+- Le fichier de données JSON est situé dans le répertoire src/assets.
+- Les composants Angular se trouvent dans le répertoire src/app.
+- Le composant de graphique en secteurs personnalisé est dans le répertoire src/app/components/charts.
+- Les styles CSS personnalisés sont dans le répertoire src/app/styles
+
+## Contributions
+
+Les contributions à ce projet sont les bienvenues. Si vous souhaitez apporter des améliorations ou corriger des problèmes, veuillez suivre les étapes suivantes :
+
+1. Forkez ce dépôt de code.
+2. Créez une branche pour vos modifications :
+  ```shell
+  git checkout -b feature/ma-nouvelle-fonctionnalité
+  ```
+3. Codez !
+4. Faites un commit de vos modifications :
+  ```shell
+  git commit -m "Ajouter ma nouvelle fonctionnalité"
+  ```
+5. Poussez vos modifications vers votre dépôt distant :
+  ```shell
+  git push origin feature/ma-nouvelle-fonctionnalité
+  ```
+6. Ouvrez une demande d'extraction (pull request) vers ce dépôt d'origine.
+
+## Auteur
+
+Ce projet a été développé par [Léo Mouda](https://github.com/SamouraiDuWeb).
+
+## Licence
+
+Ce projet est sous licence MIT. Consultez le fichier [LICENSE](LICENSE) pour plus d'informations.
+
