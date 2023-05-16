@@ -8,5 +8,10 @@
       <app-item-count [label] = "joLabel" [count] = "joCount"></app-item-count>
       <app-item-count [label] = "countryLabel" [count] = "countryCount"></app-item-count>
   </div>
-  <app-charts [chartType]="chartType" [chartData] = "chartData"></app-charts>
+  <div class="d-flex justify-content-center">
+    <div class="col-lg-8 col-md-10 col-sm-12">
+      <app-charts [chartType]="chartType" [chartData]="chartData"></app-charts>
+    </div>
+  </div>
+  <!-- <app-charts [chartType]="chartType" [chartData] = "chartData"></app-charts> -->
 </div>
