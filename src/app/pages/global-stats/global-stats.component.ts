@@ -18,8 +18,8 @@ export class GlobalStatsComponent implements OnInit, OnDestroy {
 
   joLabel : string = "Number of JOs";
   countryLabel : string = "Number of countries";
-  joCount?: number = 0;
-  countryCount? : number = 0;
+  joCount?: number = 10;
+  countryCount? : number = 10;
 
   constructor(private olympicService: OlympicService) { }
 
