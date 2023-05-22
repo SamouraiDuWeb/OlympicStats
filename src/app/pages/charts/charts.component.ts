@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { OlympicCountry } from 'src/app/core/models/Olympic';
@@ -13,7 +13,7 @@ import { ChartData } from 'src/app/core/models/ChartData';
   templateUrl: './charts.component.html',
   styleUrls: ['./charts.component.scss']
 })
-export class ChartsComponent implements OnInit {
+export class ChartsComponent implements OnInit, OnDestroy {
   public olympics?: OlympicCountry[];
   errorMessage: string = '';
   sub! : Subscription;
@@ -27,11 +27,13 @@ export class ChartsComponent implements OnInit {
   config?: AppConfig;
   labelJo : string = "Number of JOs";
   labelCountry : string = "Number of countries";
-  nbJo: number = 10;
-  nbCountry : number = 10;
   countryId? : number;
 
   constructor(private olympicService: OlympicService, private configService: AppConfigService, private router : Router) {}
+
+  ngOnDestroy(): void {
+    this.sub.unsubscribe();
+  }
 
 
   ngOnInit(): void {
@@ -50,11 +52,23 @@ export class ChartsComponent implements OnInit {
       next: olympics => {
           this.olympics = olympics;
           const arr = this.olympics?.filter(ol => ol.country == countryName);
-          this.countryId = arr ? arr[0].id : 0;
-          this.router.navigate(['/country-stats',this.countryId]);
+          this.countryId = arr?.length ? arr[0].id : 0;
+          const isCountryIdValid = this.isCountryIdValid(this.countryId);
+          if (isCountryIdValid && this.countryId !== 0) {
+            this.router.navigate(['/country-stats', this.countryId]);
+          } else {
+            this.router.navigate(['/not-found']);
+          }
       },
       error: err => this.errorMessage = err
     });
+  }
+
+  isCountryIdValid(countryId: number) {
+    if (countryId <= 5) {
+      return true;
+    }
+    return false;
   }
 
   drawChart() {
