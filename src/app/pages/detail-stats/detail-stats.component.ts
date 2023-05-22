@@ -25,9 +25,9 @@ export class DetailStatsComponent implements OnInit, OnDestroy {
   entriesLabel: string = 'Number of entries';
   medalsLabel: string = 'Total number medals';
   athleteLabel: string = 'Total number of athletes';
-  entriesCount?: number = 0;
-  medalsCount?: number = 0;
-  athleteCount?: number = 0;
+  entriesCount?: number = 10;
+  medalsCount?: number = 20;
+  athleteCount?: number = 30;
   chartData!: ChartData;
   chartType: string = 'line';
   chartOptions!: ChartOptions;
