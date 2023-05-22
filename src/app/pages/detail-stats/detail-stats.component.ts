@@ -28,9 +28,9 @@ export class DetailStatsComponent implements OnInit, OnDestroy {
   entriesCount?: number = 0;
   medalsCount?: number = 0;
   athleteCount?: number = 0;
-  chartData: any;
+  chartData!: ChartData;
   chartType: string = 'line';
-  chartOptions: any;
+  chartOptions!: ChartOptions;
 
   defaultCountry: OlympicCountry = {
     id: 1,

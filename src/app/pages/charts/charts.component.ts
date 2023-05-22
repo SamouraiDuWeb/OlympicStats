@@ -17,7 +17,7 @@ export class ChartsComponent implements OnInit {
   public olympics?: OlympicCountry[];
   errorMessage: string = '';
   sub! : Subscription;
-  @Input() chartData: ChartData = { labels: [] };
+  @Input() chartData!: ChartData;
   @Input() chartType: string = "";
 
   subscription?: Subscription;
@@ -38,8 +38,12 @@ export class ChartsComponent implements OnInit {
     this.drawChart();
   }
 
-  selectData(event: { element: any; }) {
-    this.getCountryId(this.chartData.labels[event.element.index]);
+  selectData(event: { element: { index: number } }) {
+    const labels = this.chartData.labels;
+    if (labels && Array.isArray(labels)) {
+      const selectedLabel = labels[event.element.index].toString();
+      this.getCountryId(selectedLabel);
+    }
 }
   getCountryId(countryName : string) {
     this.sub = this.olympicService.getOlympics().subscribe({

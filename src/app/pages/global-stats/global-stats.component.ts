@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { ChartData } from 'src/app/core/models/ChartData';
 import { OlympicCountry } from 'src/app/core/models/Olympic';
 import { OlympicService } from 'src/app/core/services/olympic.service';
 
@@ -12,7 +13,7 @@ export class GlobalStatsComponent implements OnInit, OnDestroy {
   public olympics?: OlympicCountry[];
   errorMessage: string = '';
   sub! : Subscription;
-  chartData: any;
+  chartData!: ChartData;
   chartType: string = "";
 
   joLabel : string = "Number of JOs";
@@ -38,6 +39,7 @@ export class GlobalStatsComponent implements OnInit, OnDestroy {
   drawChart() {
     const label = this.olympics?.map( olympic => olympic.country);
     const data = this.olympics?.map(val => {
+
       //number of JOs
       this.joCount = val.participations.length;
       return val.participations.map(p => p.medalsCount).reduce((sum,current) => {
@@ -45,6 +47,7 @@ export class GlobalStatsComponent implements OnInit, OnDestroy {
         return sum;
       })
     });
+
     //number of countries
     this.countryCount = this.olympics?.length;
     this.chartType = "pie";

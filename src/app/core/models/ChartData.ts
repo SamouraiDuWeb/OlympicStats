@@ -1,4 +1,9 @@
 export interface ChartData {
-  labels: string[];
-  // Add more properties if necessary
+  labels?: string[] | number[];
+  datasets: ChartDataset[];
+}
+
+export interface ChartDataset {
+  data?: number[];
+  label?: string;
 }
