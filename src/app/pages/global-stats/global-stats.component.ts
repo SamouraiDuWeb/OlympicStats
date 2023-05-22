@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { OlympicCountry } from 'src/app/core/models/Olympic';
 import { OlympicService } from 'src/app/core/services/olympic.service';
@@ -8,14 +8,12 @@ import { OlympicService } from 'src/app/core/services/olympic.service';
   templateUrl: './global-stats.component.html',
   styleUrls: ['./global-stats.component.scss']
 })
-export class GlobalStatsComponent implements OnInit {
+export class GlobalStatsComponent implements OnInit, OnDestroy {
   public olympics?: OlympicCountry[];
   errorMessage: string = '';
   sub! : Subscription;
   chartData: any;
   chartType: string = "";
-
-  subscription?: Subscription;
 
   joLabel : string = "Number of JOs";
   countryLabel : string = "Number of countries";
@@ -23,6 +21,10 @@ export class GlobalStatsComponent implements OnInit {
   countryCount? : number = 0;
 
   constructor(private olympicService: OlympicService) { }
+
+  ngOnDestroy(): void {
+    this.sub.unsubscribe();
+  }
 
   ngOnInit(): void {
     this.sub = this.olympicService.getOlympics().subscribe({

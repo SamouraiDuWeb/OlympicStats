@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ChartData } from '../../core/models/ChartData';
+import { ChartOptions } from '../../core/models/ChartOptions';
 import { Subscription } from 'rxjs';
 import { OlympicCountry } from 'src/app/core/models/Olympic';
 import { OlympicService } from 'src/app/core/services/olympic.service';
@@ -9,7 +11,7 @@ import { OlympicService } from 'src/app/core/services/olympic.service';
   templateUrl: './detail-stats.component.html',
   styleUrls: ['./detail-stats.component.scss'],
 })
-export class DetailStatsComponent implements OnInit {
+export class DetailStatsComponent implements OnInit, OnDestroy {
 
   countryName?: string;
   countryId?: number;
@@ -111,6 +113,9 @@ export class DetailStatsComponent implements OnInit {
 
   onBack() : void{
     this.router.navigate(['/']);
+  }
+
+  ngOnDestroy(): void {
     this.sub.unsubscribe();
   }
 }
