@@ -13,7 +13,7 @@ import { ChartData } from 'src/app/core/models/ChartData';
   templateUrl: './charts.component.html',
   styleUrls: ['./charts.component.scss']
 })
-export class ChartsComponent implements OnInit, OnDestroy {
+export class ChartsComponent implements OnInit {
   public olympics?: OlympicCountry[];
   errorMessage: string = '';
   sub! : Subscription;
@@ -31,11 +31,6 @@ export class ChartsComponent implements OnInit, OnDestroy {
 
   constructor(private olympicService: OlympicService, private configService: AppConfigService, private router : Router) {}
 
-  ngOnDestroy(): void {
-    this.sub.unsubscribe();
-  }
-
-
   ngOnInit(): void {
     this.drawChart();
   }
@@ -46,29 +41,18 @@ export class ChartsComponent implements OnInit, OnDestroy {
       const selectedLabel = labels[event.element.index].toString();
       this.getCountryId(selectedLabel);
     }
-}
+  }
+
   getCountryId(countryName : string) {
     this.sub = this.olympicService.getOlympics().subscribe({
       next: olympics => {
           this.olympics = olympics;
           const arr = this.olympics?.filter(ol => ol.country == countryName);
           this.countryId = arr?.length ? arr[0].id : 0;
-          const isCountryIdValid = this.isCountryIdValid(this.countryId);
-          if (isCountryIdValid && this.countryId !== 0) {
-            this.router.navigate(['/country-stats', this.countryId]);
-          } else {
-            this.router.navigate(['/not-found']);
-          }
+          this.router.navigate(['/country-stats',this.countryId]);
       },
       error: err => this.errorMessage = err
     });
-  }
-
-  isCountryIdValid(countryId: number) {
-    if (countryId <= 5) {
-      return true;
-    }
-    return false;
   }
 
   drawChart() {

@@ -14,16 +14,8 @@ const routes: Routes = [
     component: DetailStatsComponent,
   },
   {
-    path: 'not-found',
-    component: NotFoundComponent,
-  },
-  {
-    path: 'country-stats/**',
-    redirectTo: '/not-found'
-  },
-  {
     path: '**',
-    redirectTo: '/not-found'
+    component: NotFoundComponent,
   },
 ];
 
