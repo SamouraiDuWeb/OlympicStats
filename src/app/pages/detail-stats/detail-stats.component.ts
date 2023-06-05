@@ -72,8 +72,12 @@ export class DetailStatsComponent implements OnInit, OnDestroy {
       next: (olympics) => {
         this.olympics = olympics;
         const arr = this.olympics?.filter((ol) => ol.id == this.countryId);
-        this.currentCountryStats = arr ? arr[0] : this.defaultCountry;
-        this.drawGraphic();
+        if (arr && arr !== undefined) {
+          this.currentCountryStats = arr[0];
+          this.drawGraphic();
+        } else {
+          this.router.navigate(['/not-found']);
+        }
       },
       error: (err) => (this.errorMessage = err),
     });
